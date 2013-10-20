@@ -1,0 +1,11 @@
+h2.title
+	a(href=get_url)= name
+.year= year
+.rating= imdb_rating
+
+img(src=image)
+
+ul
+	each janre_item in janre
+		li.janre
+			a(href=janre_item.get_url)= janre_item.name

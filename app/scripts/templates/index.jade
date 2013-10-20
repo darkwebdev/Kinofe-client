@@ -1,0 +1,32 @@
+!!!
+//if lt IE 8
+	<html class="no-js lt-ie9 lt-ie8">
+//if IE 8
+	<html class="no-js lt-ie9">
+//[if gt IE 8]><!
+html.no-js
+	//<![endif]
+
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title Kinofé
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width')
+		// Place favicon.ico and apple-touch-icon.png in the root directory
+		link(rel='stylesheet', href='styles/main.css')
+		script(src='bower_components/modernizr/modernizr.js')
+
+	body
+
+		.container
+			.header
+				h3.text-muted Kinofé
+
+				.row.text-left
+					.films.col-md-offset-4
+
+				.footer
+					p tibalt was here
+
+		script(data-main='scripts/main', src='bower_components/requirejs/require.js')

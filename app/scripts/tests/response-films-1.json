@@ -1,0 +1,253 @@
+[
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 10,
+                name: "thriller",
+                get_url: "/top/thriller/"
+            },
+            {
+                pk: 1,
+                name: "action",
+                get_url: "/top/action/"
+            },
+            {
+                pk: 14,
+                name: "crime",
+                get_url: "/top/crime/"
+            }
+        ],
+        imdb_rating: "8.7",
+        name: "The Dark Knight Rises",
+        year: "2012",
+        pk: 41,
+        image: "http://content9.flixster.com/movie/11/16/78/11167835_mob.jpg",
+        get_url: "/what/41",
+        imdb_id: "1345836"
+    },
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 5,
+                name: "comedy",
+                get_url: "/top/comedy/"
+            },
+            {
+                pk: 15,
+                name: "biography",
+                get_url: "/top/biography/"
+            }
+        ],
+        imdb_rating: "8.6",
+        name: "The Intouchables",
+        year: "2011",
+        pk: 91,
+        image: "http://content6.flixster.com/movie/11/16/41/11164128_mob.jpg",
+        get_url: "/what/91",
+        imdb_id: "1675434"
+    },
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 14,
+                name: "crime",
+                get_url: "/top/crime/"
+            },
+            {
+                pk: 2,
+                name: "adventure",
+                get_url: "/top/adventure/"
+            },
+            {
+                pk: 21,
+                name: "western",
+                get_url: "/top/western/"
+            }
+        ],
+        imdb_rating: "8.6",
+        name: "Django Unchained",
+        year: "2012",
+        pk: 167,
+        image: "http://content6.flixster.com/movie/11/16/75/11167576_mob.jpg",
+        get_url: "/what/167",
+        imdb_id: "1853728"
+    },
+    {
+        janre: [
+            {
+                pk: 1,
+                name: "action",
+                get_url: "/top/action/"
+            }
+        ],
+        imdb_rating: "8.4",
+        name: "The Avengers",
+        year: "2012",
+        pk: 31,
+        image: "http://content8.flixster.com/movie/11/16/38/11163886_mob.jpg",
+        get_url: "/what/31",
+        imdb_id: "0848228"
+    },
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 11,
+                name: "romance",
+                get_url: "/top/romance/"
+            }
+        ],
+        imdb_rating: "8.2",
+        name: "The Perks of Being a Wallflower",
+        year: "2012",
+        pk: 113,
+        image: "http://content6.flixster.com/movie/11/16/86/11168692_mob.jpg",
+        get_url: "/what/113",
+        imdb_id: "1659337"
+    },
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 2,
+                name: "adventure",
+                get_url: "/top/adventure/"
+            }
+        ],
+        imdb_rating: "8.2",
+        name: "Life of Pi",
+        year: "2012",
+        pk: 139,
+        image: "http://content7.flixster.com/movie/11/16/60/11166061_mob.jpg",
+        get_url: "/what/139",
+        imdb_id: "0454876"
+    },
+    {
+        janre: [
+            {
+                pk: 2,
+                name: "adventure",
+                get_url: "/top/adventure/"
+            },
+            {
+                pk: 3,
+                name: "fantasy",
+                get_url: "/top/fantasy/"
+            }
+        ],
+        imdb_rating: "8.2",
+        name: "The Hobbit: An Unexpected Journey",
+        year: "2012",
+        pk: 147,
+        image: "http://content9.flixster.com/movie/11/17/02/11170263_mob.jpg",
+        get_url: "/what/147",
+        imdb_id: "0903624"
+    },
+    {
+        janre: [
+            {
+                pk: 13,
+                name: "documentary",
+                get_url: "/top/documentary/"
+            },
+            {
+                pk: 15,
+                name: "biography",
+                get_url: "/top/biography/"
+            },
+            {
+                pk: 19,
+                name: "music",
+                get_url: "/top/music/"
+            }
+        ],
+        imdb_rating: "8.1",
+        name: "Searching for Sugar Man",
+        year: "2012",
+        pk: 98,
+        image: "http://content9.flixster.com/movie/11/16/60/11166031_mob.jpg",
+        get_url: "/what/98",
+        imdb_id: "2125608"
+    },
+    {
+        janre: [
+            {
+                pk: 5,
+                name: "comedy",
+                get_url: "/top/comedy/"
+            },
+            {
+                pk: 2,
+                name: "adventure",
+                get_url: "/top/adventure/"
+            },
+            {
+                pk: 7,
+                name: "family",
+                get_url: "/top/family/"
+            },
+            {
+                pk: 4,
+                name: "animation",
+                get_url: "/top/animation/"
+            }
+        ],
+        imdb_rating: "8.1",
+        name: "Finding Nemo",
+        year: "2003",
+        pk: 182,
+        image: "http://content6.flixster.com/movie/10/84/19/10841916_mob.jpg",
+        get_url: "/what/182",
+        imdb_id: "0266543"
+    },
+    {
+        janre: [
+            {
+                pk: 6,
+                name: "drama",
+                get_url: "/top/drama/"
+            },
+            {
+                pk: 5,
+                name: "comedy",
+                get_url: "/top/comedy/"
+            },
+            {
+                pk: 11,
+                name: "romance",
+                get_url: "/top/romance/"
+            }
+        ],
+        imdb_rating: "8",
+        name: "Moonrise Kingdom",
+        year: "2012",
+        pk: 20,
+        image: "http://content9.flixster.com/movie/11/16/67/11166787_mob.jpg",
+        get_url: "/what/20",
+        imdb_id: "1748122"
+    }
+]
+
