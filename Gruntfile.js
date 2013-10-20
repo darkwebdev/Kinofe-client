@@ -30,8 +30,14 @@ module.exports = function (grunt) {
             options: {
                 nospawn: true
             },
+            grunt: {
+                files: ['Gruntfile.js']
+            },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                files: [
+                    '<%= yeoman.app %>/styles/{,*/}*.{scss,sass}',
+                    '<%= yeoman.app %>/images/icon/*.png'
+                ],
                 tasks: ['compass']
             },
             livereload: {
@@ -125,10 +131,11 @@ module.exports = function (grunt) {
                 sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/images',
+                httpGeneratedImagesPath: '../images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: '<%= yeoman.app %>/bower_components',
-                relativeAssets: true
+                relativeAssets: false
             },
             dist: {},
             server: {

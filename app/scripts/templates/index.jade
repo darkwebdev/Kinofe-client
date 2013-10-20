@@ -19,14 +19,17 @@ html.no-js
 
 	body
 
-		.container
-			.header
-				h3.text-muted Kinofé
+		header.main-header
+			h1
+				a.img.img-replace.icon-logo(href="/") Kinofé
+				a(href="#")
+					.icon-settings
+				a(href='#')
+					.icon-theater
 
-				.row.text-left
-					.films.col-md-offset-4
+				h2 DVD RELEASES
 
-				.footer
-					p tibalt was here
+		section.main-content
+			ul.films.movie-list
 
 		script(data-main='scripts/main', src='bower_components/requirejs/require.js')

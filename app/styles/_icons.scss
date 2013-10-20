@@ -1,0 +1,12 @@
+$sprite-url: '../images';
+//$icon-layout: smart;
+$icon-spacing: 10px;
+@import 'icon/*.png';
+@include all-icon-sprites;
+
+.img-replace {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 100%;
+}

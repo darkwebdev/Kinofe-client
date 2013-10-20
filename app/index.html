@@ -17,17 +17,16 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h3 class="text-muted">Kinofé</h3>
-        <div class="row text-left">
-          <div class="films col-md-offset-4"></div>
-        </div>
-        <div class="footer">
-          <p>tibalt was here</p>
-        </div>
-      </div>
-    </div>
+    <header class="main-header">
+      <h1><a href="/" class="img img-replace icon-logo">Kinofé</a><a href="#">
+          <div class="icon-settings"></div></a><a href="#">
+          <div class="icon-theater"></div></a>
+        <h2>DVD RELEASES</h2>
+      </h1>
+    </header>
+    <section class="main-content">
+      <ul class="films movie-list"></ul>
+    </section>
     <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
   </body>
 </html>

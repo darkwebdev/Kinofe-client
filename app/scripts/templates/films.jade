@@ -1,11 +1,10 @@
-h2.title
-	a(href=get_url)= name
-.year= year
-.rating= imdb_rating
-
-img(src=image)
-
-ul
-	each janre_item in janre
-		li.janre
-			a(href=janre_item.get_url)= janre_item.name
+li.movie
+	section.info
+		h3=name
+		time.year= year
+		ul.janre-list
+			each janre_item in janre
+				li= janre_item.name
+	.shelf
+		img(src=image)
+		.rating.icon-sticker= imdb_rating
