@@ -24,14 +24,20 @@ define([
         },
 
         events: {
-            'click': 'getFilm'
+            'click': 'filmHandler',
+            'click .janre': 'janreHandler'
         },
 
-        getFilm: function() {
+        filmHandler: function() {
             console.log('get film', this.model.id);
             this.showFilm(this.model.id);
+        },
 
-//            this.navigate('/' + this.model.id);
+        janreHandler: function(e) {
+            e.stopPropagation();
+            var name = $(e.target).data('name').toLowerCase();
+            console.log('get janre', name);
+            this.getJanre(name);
         }
 
     });

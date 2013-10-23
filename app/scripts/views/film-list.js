@@ -16,6 +16,7 @@ define([
             this.collection.page = 1;
 
             this.$el.empty();
+            scroll(0,0);
             $('.film-details').hide(); // todo: refactor
             this.options.sidebar.hide();
 

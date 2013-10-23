@@ -4,7 +4,7 @@
 		time.year= year
 		ul.janre-list
 			each janre_item in janre
-				li= janre_item.name
+				li(data-name=janre_item.name).janre= janre_item.name
 	.shelf
 		img(src=image)
 		.rating.icon-sticker= imdb_rating

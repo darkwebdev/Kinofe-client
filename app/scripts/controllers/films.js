@@ -17,7 +17,6 @@ define([
     return {
         initialize: function() {
             var router = new Router();
-            var films = new FilmsCollection();
 
             router.on('route:getFilm', function(id) {
                 console.log('getFilm route', id, film);
@@ -25,12 +24,24 @@ define([
                 var view = new FilmDetailsView({model: film});
             });
 
+            router.on('route:getJanre', function(name) {
+                console.log('getJanre route', name, janreFilms);
+                var janreFilms = new FilmsCollection([], {
+                    url: '/scripts/tests/response-janre.json'
+                });
+                showFilmList(janreFilms);
+            });
+
             router.on('route:defaultRoute', function(actions) {
                 console.log('default route');
 
+                showFilmList();
+            });
+
+            var showFilmList = function(collection) {
                 var sidebarView = new SidebarView();
                 var filmListView = new FilmListView({
-                    collection: films,
+                    collection: collection || new FilmsCollection(),
                     sidebar: sidebarView
                 });
 
@@ -41,14 +52,15 @@ define([
                 $('.icon-theater').on('click', function(){
                     console.log('icon theater clicked');
                 });
-            });
+            };
+
+            var navigate = function(loc) {
+                return router.navigate(loc, {trigger: true});
+            };
 
             // View
 
             _.extend(Backbone.View.prototype, {
-                navigate: function(loc) {
-                    return router.navigate(loc, {trigger: true});
-                },
                 isBusy: false,
                 setBusy: function() {
                     console.log('busy');
@@ -63,6 +75,9 @@ define([
                 showFilm: function(id) {
                     var film = new FilmsModel({id: 'id'});
                     var filmView = new FilmDetailsView({model:film});
+                },
+                getJanre: function(name) {
+                    return navigate('/janre/' + name);
                 }
             });
 
