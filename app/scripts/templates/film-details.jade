@@ -1,51 +1,26 @@
+.back back
+
 img(src=image_l)
 .info
 	h2= name
-		.year= year
+		.year= 'year: ' + year
+		.rating= 'rating: ' + imdb_rating + ' (' + imdb_votes + ' votes)'
+		ul.janre-list janres:
+			each janre_item in janre
+				li= janre_item.name
+		.runtime= 'runtime: ' + get_runtime
+		div= 'theater release: ' + theater_date
+		div= 'dvd release: ' + dvd_date
+		article.description
+			p= desc
+		div director:
+			ul.crew
+				each director_person in director
+					li= director_person.name
+		div actors:
+			ul.crew
+				each actor_person in actor
+					li= actor_person.name + ' as ' + actor_person.get_char
 
-//
-//
-//	<a href="{{ movie.image_o }}" class="movie-image hidden"><img src="{{ movie.image_l }}"/></a>
-//	<div class="info">
-//		<h2>{{ movie.name }}</h2>
-//
-//		<div class="year">year: {{ movie.year }}</div>
-//		<div class="rating">rating: {{ movie.imdb_rating }} ({{ movie.imdb_votes }} votes)</div>
-//		<ul class="janre-list">janres:
-//			{{#each movie.janre }}
-//				<li><a href="{{ this.get_url }}">{{ this.name }}</a></li>
-//			{{/each }}
-//		</ul>
-//		<div class="runtime">runtime: {{ movie.get_runtime }}</div>
-//		<div>theater release: {{ movie.theater_date }}</div>
-//		<div>dvd release: {{ movie.dvd_date }}</div>
-//		<article class="description">
-//			{{ movie.desc }}
-//		</article>
-//
-//		director:
-//		<ul class="crew">
-//			{{#each movie.director }}
-//				<li><a href="{{ this.get_url }}">{{ this.name }}</a></li>
-//			{{/each }}
-//		</ul>
-//
-//		actors:
-//		<ul class="crew">
-//			{{#each movie.actor }}
-//				<li><a href="{{ this.get_url }}">{{ this.name }}</a> - {{ this.get_char }}</li>
-//			{{/each }}
-//		</ul>
-//
-//		<ul class="source-list">
-//			<li><a href="http://torrtilla.ru/torrents/{{ movie.name }} {{ movie.year }}#movies">Искать торренты на torrtilla</a></li>
-//			<li><a href="http://torrentfish.org/torrents/{{ movie.name }} {{ movie.year }}#movies">Search on TorrentFish</a></li>
-//			<li><a href="http://kat.ph/usearch/seeds:1%20imdb:{{ movie.imdb_id }}%20language:english/">Search on Kickass Torrents</a></li>
-//			<li><a href="http://kinopod.ru/advanced.html?s={{ movie.name }}&year={{ movie.year }}">Смотреть на KinoPod</a></li>
-//			<li><a href="http://kinoteatr.ws/?s={{ movie.name }} {{ movie.year }}">Смотреть на kinoteatr.ws</a></li>
-//			<li><a href="http://kinostok.tv/search/detailed/{{ movie.name }} {{ movie.year }}/">Смотреть на Киностоке</a></li>
-//			<li><a href="http://kinobomba.net/search/?q={{ movie.name }} {{ movie.year }}&m=site&m=news">Смотреть на Kinobomba.net</a></li>
-//		<div>
-//			<a href="http://www.imdb.com/title/tt{{ movie.imdb_id }}">Full info on IMDB</a>
-//		</div>
-//	</div>
+		div
+			a(href='http://www.imdb.com/title/tt#{imdb_id}', target='_blank') Full info on IMDB

@@ -14,6 +14,8 @@ define([
         initialize: function() {
             console.log('film list view initialize');
             this.$el.empty();
+            this.collection.page = 1;
+            $('.film-details').hide();
             this.update();
             _.bindAll(this, 'scrollDown'); //????
             $(window).scroll(this.scrollDown);
@@ -30,12 +32,12 @@ define([
                     $.when(
                         view.render()
                     ).then(function() {
-                        view.collection.page += 1;
                         view.setFree();
                     })
                 },
                 error: function(response){
                     console.log('ajax error', response);
+                    view.collection.page -= 1;
                     view.setFree();
                 }
             });
@@ -46,7 +48,6 @@ define([
                 html;
             console.log('col', this.collection);
             this.collection.each(function(film) {
-                console.log('each', film, film.toJSON());
                 filmView = new FilmView({model: film});
                 filmView.render();
                 html = filmView.el;
@@ -62,6 +63,7 @@ define([
             var triggerPoint = 100; // 100px from the bottom
 
             if( !this.isBusy && $('body')[0].scrollTop + $(window).height() + triggerPoint > $(document).height() ) {
+                this.collection.page += 1;
                 this.update();
             }
         }

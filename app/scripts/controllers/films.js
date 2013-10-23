@@ -44,6 +44,10 @@ define([
                     console.log('free');
                     this.isBusy = false;
                     this.$el.removeClass('_busy');
+                },
+                showFilm: function(id) {
+                    var film = new FilmsModel({id: 'id'});
+                    var filmView = new FilmDetailsView({model:film});
                 }
             });
 

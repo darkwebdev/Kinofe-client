@@ -43,6 +43,9 @@ define([
         },
 
         events: {
+            'click .back': function() {
+                this.$el.hide();
+            }
         }
     });
 
