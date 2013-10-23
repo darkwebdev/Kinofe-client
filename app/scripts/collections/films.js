@@ -1,5 +1,3 @@
-/*global define*/
-
 define([
     'underscore',
     'backbone',
@@ -17,8 +15,9 @@ define([
         },
 
         parse: function(response) {
+//            console.log('col parse', typeof response, response);
             var validResponse = JSON.parse(response);
-//            console.log('parse', validResponse);
+//            console.log('col parsed', typeof validResponse, validResponse);
             return validResponse;
         },
 

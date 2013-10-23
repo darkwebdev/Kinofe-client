@@ -1,36 +1,21 @@
-/*global define*/
-
 define([
     'jquery',
     'underscore',
     'backbone',
-    'templates',
-    'jade',
-    'jade!../templates/films'
-], function ($, _, Backbone, JST, Jade, FilmsHtml) {
+    'router',
+    'views/film-item',
+], function ($, _, Backbone, Router, FilmView) {
     'use strict';
 
-    var FilmsView = Backbone.View.extend({
-        el: '.films',
-//        template: JST['app/scripts/templates/films.ejs'],
-        template: FilmsHtml,
+    var FilmListView = Backbone.View.extend({
+        el: '.film-list',
         isBusy: false,
 
-        setBusy: function() {
-            console.log('busy');
-            this.isBusy = true;
-            this.$el.addClass('_busy');
-        },
-
-        setFree: function() {
-            console.log('free');
-            this.isBusy = false;
-            this.$el.removeClass('_busy');
-        },
-
         initialize: function() {
+            console.log('film list view initialize');
             this.$el.empty();
-            _.bindAll(this, 'scrollDown');
+            this.update();
+            _.bindAll(this, 'scrollDown'); //????
             $(window).scroll(this.scrollDown);
         },
 
@@ -57,17 +42,17 @@ define([
         },
 
         render: function() {
-            this.collection.each(function(item) {
-                this.renderItem(item);
+            var filmView,
+                html;
+            console.log('col', this.collection);
+            this.collection.each(function(film) {
+                console.log('each', film, film.toJSON());
+                filmView = new FilmView({model: film});
+                filmView.render();
+                html = filmView.el;
+                this.$el.append(html);
             }, this);
             return this;
-        },
-
-        renderItem: function(film) {
-            var dict = film.toJSON();
-            var html = this.template(dict);
-//            console.log('render', dict);
-            this.$el.append(html);
         },
 
         events: {
@@ -82,5 +67,5 @@ define([
         }
     });
 
-    return FilmsView;
+    return FilmListView;
 });
