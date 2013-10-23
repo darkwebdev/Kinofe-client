@@ -10,3 +10,21 @@ $icon-spacing: 10px;
 	white-space: nowrap;
 	text-indent: 100%;
 }
+
+.icon-settings {
+	position: absolute;
+	top: 17px;
+	left: 10px;
+	height: 30px;
+	width: 40px;
+	cursor: pointer;
+}
+
+.icon-theater {
+	position: absolute;
+	top: 17px;
+	right: 10px;
+	height: 30px;
+	width: 40px;
+	cursor: pointer;
+}

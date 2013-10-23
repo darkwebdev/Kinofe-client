@@ -13,9 +13,12 @@ define([
 
         initialize: function() {
             console.log('film list view initialize');
-            this.$el.empty();
             this.collection.page = 1;
-            $('.film-details').hide();
+
+            this.$el.empty();
+            $('.film-details').hide(); // todo: refactor
+            this.options.sidebar.hide();
+
             this.update();
             _.bindAll(this, 'scrollDown'); //????
             $(window).scroll(this.scrollDown);
@@ -56,8 +59,7 @@ define([
             return this;
         },
 
-        events: {
-        },
+        events: {},
 
         scrollDown: function () {
             var triggerPoint = 100; // 100px from the bottom

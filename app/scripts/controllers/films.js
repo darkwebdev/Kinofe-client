@@ -7,8 +7,9 @@ define([
     'collections/films',
     'views/film-details',
     'views/film-list',
+    'views/sidebar',
     'router'
-], function (_, Backbone, FilmsModel, FilmsCollection, FilmDetailsView, FilmListView, Router) {
+], function (_, Backbone, FilmsModel, FilmsCollection, FilmDetailsView, FilmListView, SidebarView, Router) {
     'use strict';
 
     console.log('controller');
@@ -26,7 +27,20 @@ define([
 
             router.on('route:defaultRoute', function(actions) {
                 console.log('default route');
-                var view = new FilmListView({collection: films});
+
+                var sidebarView = new SidebarView();
+                var filmListView = new FilmListView({
+                    collection: films,
+                    sidebar: sidebarView
+                });
+
+                $('.icon-settings').on('click', function(){
+                    console.log('icon settings clicked');
+                    sidebarView.$el.show();
+                });
+                $('.icon-theater').on('click', function(){
+                    console.log('icon theater clicked');
+                });
             });
 
             // View
@@ -35,6 +49,7 @@ define([
                 navigate: function(loc) {
                     return router.navigate(loc, {trigger: true});
                 },
+                isBusy: false,
                 setBusy: function() {
                     console.log('busy');
                     this.isBusy = true;

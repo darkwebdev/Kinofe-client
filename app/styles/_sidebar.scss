@@ -1,0 +1,39 @@
+.sidebar {
+	display: none;
+	position: fixed;
+	overflow-y: auto;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: $darkBgColor;
+
+	.back {
+		cursor: pointer;
+	}
+
+	.content {
+		margin: 50px auto;
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	p {
+		line-height: 20px;
+		font-size: 14px;
+		color: $lightColor;
+	}
+
+	.auth-list li {
+		line-height: 32px;
+		font-size: 16px;
+		color: #fff;
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
