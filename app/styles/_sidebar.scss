@@ -1,16 +1,6 @@
 .sidebar {
-	display: none;
-	position: fixed;
-	overflow-y: auto;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
+	@extend .details;
 	background: $darkBgColor;
-
-	.back {
-		cursor: pointer;
-	}
 
 	.content {
 		margin: 50px auto;

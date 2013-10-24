@@ -7,7 +7,7 @@ img(src=image_l)
 		.rating= 'rating: ' + imdb_rating + ' (' + imdb_votes + ' votes)'
 		ul.janre-list janres:
 			each janre_item in janre
-				li(data-id=janre_item.pk)= janre_item.name
+				li.janre(data-name=janre_item.name)= janre_item.name
 		.runtime= 'runtime: ' + get_runtime
 		div= 'theater release: ' + theater_date
 		div= 'dvd release: ' + dvd_date
@@ -16,11 +16,11 @@ img(src=image_l)
 		div director:
 			ul.crew
 				each director_person in director
-					li(data-id=director_person.pk)= director_person.name
+					li.person(data-id=director_person.pk)= director_person.name
 		div actors:
 			ul.crew
 				each actor_person in actor
-					li(data-id=actor_person.pk)= actor_person.name + ' as ' + actor_person.get_char
+					li.person(data-id=actor_person.pk)= actor_person.name + ' as ' + actor_person.get_char
 
 		div
 			a(href='http://www.imdb.com/title/tt#{imdb_id}', target='_blank') Full info on IMDB

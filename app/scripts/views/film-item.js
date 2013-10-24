@@ -2,42 +2,35 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'views/generic-view',
     'jade!../templates/film-list-item'
-], function ($, _, Backbone, FilmHtml) {
+], function ($, _, Backbone, View, FilmHtml) {
     'use strict';
 
-    var FilmView = Backbone.View.extend({
+    var FilmView = View.extend({
         template: FilmHtml,
         tagName: 'li',
 
         initialize: function() {
+            console.log('film view init');
 //            _.bindAll(this, 'click', 'render');
+            this.events = _.extend({}, View.prototype.events, this.events);
         },
 
         render: function() {
             var dict = this.model.toJSON();
-//            console.log('render', dict);
-//            console.log('model', this.model);
             var html = this.template(dict);
-            this.$el.html(html);
-            return this;
+//            console.log('render', dict);
+            this.$el.html(html).show();
         },
 
         events: {
-            'click': 'filmHandler',
-            'click .janre': 'janreHandler'
+            'click': 'filmHandler'
         },
 
         filmHandler: function() {
             console.log('get film', this.model.id);
             this.showFilm(this.model.id);
-        },
-
-        janreHandler: function(e) {
-            e.stopPropagation();
-            var name = $(e.target).data('name').toLowerCase();
-            console.log('get janre', name);
-            this.getJanre(name);
         }
 
     });

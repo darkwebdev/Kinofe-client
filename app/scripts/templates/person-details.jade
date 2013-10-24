@@ -1,0 +1,13 @@
+.back back
+
+//img(src=image_l)
+.info
+	h2= name
+		ul.person-film-list films:
+			each film_item in films
+				li.person-film(data-id=film_item.pk)= film_item.name + ' (' + film_item.imdb_rating + ') ' + film_item.year
+		article.description
+			p= desc
+
+		div
+			a(href='http://www.imdb.com/title/tt#{imdb_id}', target='_blank') Full info on IMDB

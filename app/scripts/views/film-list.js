@@ -2,14 +2,13 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'router',
+    'views/generic-view',
     'views/film-item',
-], function ($, _, Backbone, Router, FilmView) {
+], function ($, _, Backbone, View, FilmView) {
     'use strict';
 
-    var FilmListView = Backbone.View.extend({
+    var FilmListView = View.extend({
         el: '.film-list',
-        isBusy: false,
 
         initialize: function() {
             console.log('film list view initialize');
@@ -17,8 +16,9 @@ define([
 
             this.$el.empty();
             scroll(0,0);
-            $('.film-details').hide(); // todo: refactor
-            this.options.sidebar.hide();
+
+            this.options.router.hideDetails();
+            this.options.router.hideSidebar();
 
             this.update();
             _.bindAll(this, 'scrollDown'); //????
@@ -52,15 +52,16 @@ define([
                 html;
             console.log('col', this.collection);
             this.collection.each(function(film) {
-                filmView = new FilmView({model: film});
+                filmView = new FilmView({
+                    model: film,
+                    router: this.options.router
+                });
                 filmView.render();
                 html = filmView.el;
                 this.$el.append(html);
             }, this);
             return this;
         },
-
-        events: {},
 
         scrollDown: function () {
             var triggerPoint = 100; // 100px from the bottom

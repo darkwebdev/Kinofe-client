@@ -3,25 +3,70 @@
 define([
     'underscore',
     'backbone',
+
+    'models/persons',
     'models/films',
     'collections/films',
+
+    'views/person-details',
     'views/film-details',
     'views/film-list',
-    'views/sidebar',
-    'router'
-], function (_, Backbone, FilmsModel, FilmsCollection, FilmDetailsView, FilmListView, SidebarView, Router) {
+    'views/sidebar'
+], function (_, Backbone,
+         PersonsModel, FilmsModel, FilmsCollection,
+         PersonDetailsView, FilmDetailsView, FilmListView, SidebarView
+    ) {
     'use strict';
 
     console.log('controller');
 
+    var Router = Backbone.Router.extend({
+        routes: {
+            'janre/:name': 'getJanre',
+            ':id': 'getFilm',
+            '*actions': 'defaultRoute'
+        },
+
+        detailsView: null,
+        sidebarView: new SidebarView(),
+
+        showDetails: function(Model, View, id) {
+//            console.log('show details', Model, View, id);
+            var model = new Model({id: id});
+            this.detailsView = new View({
+                model: model,
+                router: this
+            });
+            return this;
+        },
+
+        hideDetails: function() {
+            console.log('hide details');
+            this.detailsView && this.detailsView.hide();
+        },
+
+        hideSidebar: function() {
+            console.log('hide sidebar');
+            this.sidebarView.hide();
+        },
+
+        showFilm: function(id) {
+            return this.showDetails(FilmsModel, FilmDetailsView, id);
+        },
+
+        showPerson: function(id) {
+            return this.showDetails(PersonsModel, PersonDetailsView, id);
+        }
+    });
+
     return {
         initialize: function() {
+
             var router = new Router();
 
             router.on('route:getFilm', function(id) {
-                console.log('getFilm route', id, film);
-                var film = new FilmsModel({id: 'id'});
-                var view = new FilmDetailsView({model: film});
+                console.log('getFilm route', id);
+                return this.showFilm(id);
             });
 
             router.on('route:getJanre', function(name) {
@@ -29,57 +74,26 @@ define([
                 var janreFilms = new FilmsCollection([], {
                     url: '/scripts/tests/response-janre.json'
                 });
-                showFilmList(janreFilms);
+                return showFilmList(janreFilms);
             });
 
             router.on('route:defaultRoute', function(actions) {
                 console.log('default route');
-
-                showFilmList();
+                return showFilmList();
             });
 
             var showFilmList = function(collection) {
-                var sidebarView = new SidebarView();
                 var filmListView = new FilmListView({
                     collection: collection || new FilmsCollection(),
-                    sidebar: sidebarView
+                    router: router
                 });
 
-                $('.icon-settings').on('click', function(){
-                    console.log('icon settings clicked');
-                    sidebarView.$el.show();
-                });
                 $('.icon-theater').on('click', function(){
                     console.log('icon theater clicked');
                 });
+
+                return filmListView;
             };
-
-            var navigate = function(loc) {
-                return router.navigate(loc, {trigger: true});
-            };
-
-            // View
-
-            _.extend(Backbone.View.prototype, {
-                isBusy: false,
-                setBusy: function() {
-                    console.log('busy');
-                    this.isBusy = true;
-                    this.$el.addClass('_busy');
-                },
-                setFree: function() {
-                    console.log('free');
-                    this.isBusy = false;
-                    this.$el.removeClass('_busy');
-                },
-                showFilm: function(id) {
-                    var film = new FilmsModel({id: 'id'});
-                    var filmView = new FilmDetailsView({model:film});
-                },
-                getJanre: function(name) {
-                    return navigate('/janre/' + name);
-                }
-            });
 
 
             Backbone.history.start();
