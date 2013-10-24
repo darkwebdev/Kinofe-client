@@ -48,7 +48,9 @@ define([
 
         events: function() {
             return _.extend({}, GenericView.prototype.events, {
-              'click .back': 'hide'
+                'click .link-back': function() {
+                  window.history.back();
+                }
             });
         }
 

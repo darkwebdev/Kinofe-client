@@ -12,11 +12,12 @@ define([
         template: SidebarHtml,
 
         initialize: function() {
+            var view = this;
             this.render();
 
             $('.icon-settings').on('click', function(){
                 console.log('icon settings clicked');
-                this.show();
+                view.show();
             });
         },
 

@@ -1,14 +1,30 @@
 .details {
-	display: none;
-	position: fixed;
-	overflow-y: auto;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background: #fff;
+	background: $darkBgColor;
 
 	.back {
 		cursor: pointer;
-		}
 	}
+
+	.content {
+		margin: 20px;
+		color: $lightColor;
+	}
+
+	.details-img {
+		display: block;
+		margin: auto;
+	}
+
+	h2 {
+		margin: 1.5em 0;
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	li {
+		margin-left: 1em;
+		list-style: initial;
+	}
+
+}

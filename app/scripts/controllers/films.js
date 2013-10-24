@@ -23,6 +23,7 @@ define([
     var Router = Backbone.Router.extend({
         routes: {
             'janre/:name': 'getJanre',
+            'person/:id': 'getPerson',
             ':id': 'getFilm',
             '*actions': 'defaultRoute'
         },
@@ -48,14 +49,6 @@ define([
         hideSidebar: function() {
             console.log('hide sidebar');
             this.sidebarView.hide();
-        },
-
-        showFilm: function(id) {
-            return this.showDetails(FilmsModel, FilmDetailsView, id);
-        },
-
-        showPerson: function(id) {
-            return this.showDetails(PersonsModel, PersonDetailsView, id);
         }
     });
 
@@ -66,7 +59,12 @@ define([
 
             router.on('route:getFilm', function(id) {
                 console.log('getFilm route', id);
-                return this.showFilm(id);
+                return this.showDetails(FilmsModel, FilmDetailsView, id);
+            });
+
+            router.on('route:getPerson', function(id) {
+                console.log('getPerson route', id);
+                return this.showDetails(PersonsModel, PersonDetailsView, id);
             });
 
             router.on('route:getJanre', function(name) {

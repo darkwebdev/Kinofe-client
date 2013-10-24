@@ -30,7 +30,7 @@ define([
 
         filmHandler: function() {
             console.log('get film', this.model.id);
-            this.showFilm(this.model.id);
+            this.options.router.navigate('/' + this.model.id, {trigger: true});
         }
 
     });

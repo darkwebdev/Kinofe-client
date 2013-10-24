@@ -1,5 +1,4 @@
 .sidebar {
-	@extend .details;
 	background: $darkBgColor;
 
 	.content {
@@ -11,12 +10,6 @@
 		font-size: 16px;
 		font-weight: bold;
 		color: #fff;
-	}
-
-	p {
-		line-height: 20px;
-		font-size: 14px;
-		color: $lightColor;
 	}
 
 	.auth-list li {

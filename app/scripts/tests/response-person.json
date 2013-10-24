@@ -13,13 +13,21 @@
             get_url: "/what/41",
             imdb_id: "1345836"
         }, {
-            imdb_rating: "8.7",
-            name: "The Dark Knight Rises",
+            imdb_rating: "8.6",
+            name: "The Intouchables",
+            year: "2011",
+            pk: 91,
+            image: "http://content6.flixster.com/movie/11/16/41/11164128_mob.jpg",
+            get_url: "/what/91",
+            imdb_id: "1675434"
+        }, {
+            imdb_rating: "8.2",
+            name: "The Hobbit: An Unexpected Journey",
             year: "2012",
-            pk: 41,
-            image: "http://content9.flixster.com/movie/11/16/78/11167835_mob.jpg",
-            get_url: "/what/41",
-            imdb_id: "1345836"
+            pk: 147,
+            image: "http://content9.flixster.com/movie/11/17/02/11170263_mob.jpg",
+            get_url: "/what/147",
+            imdb_id: "0903624"
         }, {
             imdb_rating: "8.7",
             name: "The Dark Knight Rises",
@@ -29,13 +37,13 @@
             get_url: "/what/41",
             imdb_id: "1345836"
         }, {
-            imdb_rating: "8.7",
-            name: "The Dark Knight Rises",
+            imdb_rating: "8.2",
+            name: "The Hobbit: An Unexpected Journey",
             year: "2012",
-            pk: 41,
-            image: "http://content9.flixster.com/movie/11/16/78/11167835_mob.jpg",
-            get_url: "/what/41",
-            imdb_id: "1345836"
+            pk: 147,
+            image: "http://content9.flixster.com/movie/11/17/02/11170263_mob.jpg",
+            get_url: "/what/147",
+            imdb_id: "0903624"
         }, {
             imdb_rating: "8.7",
             name: "The Dark Knight Rises",
@@ -45,21 +53,13 @@
             get_url: "/what/41",
             imdb_id: "1345836"
         }, {
-            imdb_rating: "8.7",
-            name: "The Dark Knight Rises",
-            year: "2012",
-            pk: 41,
-            image: "http://content9.flixster.com/movie/11/16/78/11167835_mob.jpg",
-            get_url: "/what/41",
-            imdb_id: "1345836"
-        }, {
-            imdb_rating: "8.7",
-            name: "The Dark Knight Rises",
-            year: "2012",
-            pk: 41,
-            image: "http://content9.flixster.com/movie/11/16/78/11167835_mob.jpg",
-            get_url: "/what/41",
-            imdb_id: "1345836"
+            imdb_rating: "8.6",
+            name: "The Intouchables",
+            year: "2011",
+            pk: 91,
+            image: "http://content6.flixster.com/movie/11/16/41/11164128_mob.jpg",
+            get_url: "/what/91",
+            imdb_id: "1675434"
         }
     ]
 }

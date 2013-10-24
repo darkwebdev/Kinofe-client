@@ -1,11 +1,14 @@
-.back back
+.link.link-back back
 
-//img(src=image_l)
-.info
-	h2= name
-		ul.person-film-list films:
+.content
+	//img(src=image_l)
+	.info
+		h2= name
+		ul.list.person-film-list films:
 			each film_item in films
-				li.person-film(data-id=film_item.pk)= film_item.name + ' (' + film_item.imdb_rating + ') ' + film_item.year
+				li
+					span.link.link-film(data-id=film_item.pk)= film_item.name
+					span= ' (' + film_item.imdb_rating + ') ' + film_item.year
 		article.description
 			p= desc
 

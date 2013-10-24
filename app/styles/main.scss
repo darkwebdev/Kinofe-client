@@ -3,11 +3,12 @@
 body {
 	overflow-y: scroll;
 	margin: 0;
-	font-family: Arial, sans-serif;
+	font: 14px Arial, sans-serif;
 	color: $mainColor;
 	background: $mainBgColor url(../images/noise.png);
 }
-h2, h3 {
+h2,
+h3 {
 	margin: 0;
 	font-weight: bold;
 }
@@ -27,6 +28,15 @@ h3 {
 	font-size: 16px;
 	color: $darkColor;
 }
+p,
+ul.list li {
+	line-height: 20px;
+}
+.link {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
 .main-header {
 	@include box-sizing(border-box);
 	padding-top: 13px;
@@ -34,28 +44,9 @@ h3 {
 	border-bottom: 1px solid $borderColor;
 }
 
-.show-panel {
-	position: absolute;
-	padding: 17px 10px;
-	top: 0;
-	width: 40px;
-	height: 30px;
-
-	&.show-settings {
-		left: 0;
-	}
-	&.show-theater {
-		right: 0;
-	}
-	span {
-		display: block;
-		height: 100%;
-	}
-}
-
 @import 'icons';
 @import 'film-list';
 @import 'details';
 @import 'sidebar';
-//@import 'panel';
+@import 'panel';
 //@import 'preloader';

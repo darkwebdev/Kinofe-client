@@ -1,26 +1,29 @@
-.back back
+.link.link-back back
 
-img(src=image_l)
-.info
-	h2= name
+.content
+	img.details-img(src=image_l)
+	.info
+		h2= name
 		.year= 'year: ' + year
 		.rating= 'rating: ' + imdb_rating + ' (' + imdb_votes + ' votes)'
-		ul.janre-list janres:
+		ul.list.janre-list janres:
 			each janre_item in janre
-				li.janre(data-name=janre_item.name)= janre_item.name
+				li.link.link-janre(data-name=janre_item.name)= janre_item.name
 		.runtime= 'runtime: ' + get_runtime
 		div= 'theater release: ' + theater_date
 		div= 'dvd release: ' + dvd_date
 		article.description
 			p= desc
 		div director:
-			ul.crew
+			ul.list.crew
 				each director_person in director
-					li.person(data-id=director_person.pk)= director_person.name
+					li.link.link-person(data-id=director_person.pk)= director_person.name
 		div actors:
-			ul.crew
+			ul.list.crew
 				each actor_person in actor
-					li.person(data-id=actor_person.pk)= actor_person.name + ' as ' + actor_person.get_char
+					li
+						span.link.link-person(data-id=actor_person.pk)= actor_person.name
+						span= ' as ' + actor_person.get_char
 
 		div
 			a(href='http://www.imdb.com/title/tt#{imdb_id}', target='_blank') Full info on IMDB

@@ -21,36 +21,35 @@ define([
             return this;
         },
 
-        getJanre: function(name) {
-            this.options.router.navigate('/janre/' + name, {trigger: true});
-            return this;
-        },
-
-        showFilm: function(id) {
-            return this.options.router.showFilm(id);
-        },
-
-        showPerson: function(id) {
-            return this.options.router.showPerson(id);
-        },
-
         events: {
-            'click .janre': 'janreHandler',
-            'click .person': 'personHandler'
+            'click .link-janre': 'janreHandler',
+            'click .link-film': 'filmHandler',
+            'click .link-person': 'personHandler'
         },
 
         janreHandler: function(e) {
             e.stopPropagation();
             var name = $(e.target).data('name').toLowerCase();
             console.log('get janre', name);
-            this.getJanre(name);
+            this.navigate('/janre/' + name);
+        },
+
+        filmHandler: function(e) {
+            e.stopPropagation();
+            var id = $(e.target).data('id');
+            console.log('show film', id);
+            this.navigate('/' + id);
         },
 
         personHandler: function(e) {
             e.stopPropagation();
             var id = $(e.target).data('id');
-            console.log('get person', id);
-            this.showPerson(id);
+            console.log('show person', id);
+            this.navigate('/person/' + id);
+        },
+
+        navigate: function(loc) {
+            return this.options.router.navigate(loc, {trigger: true});
         }
 
     });
