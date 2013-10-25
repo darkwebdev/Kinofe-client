@@ -1,0 +1,11 @@
+{
+    pk: 123,
+    name: 'tibalt',
+    social: {
+        twitter: 'tibaltwit'
+    },
+    exclude: {
+        films: [],
+        janres: []
+    }
+}

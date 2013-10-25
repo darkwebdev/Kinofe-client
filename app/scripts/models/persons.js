@@ -5,7 +5,7 @@ define([
 ], function (_, Backbone, JSON) {
     'use strict';
 
-    var PersonModel = Backbone.Model.extend({
+    var PersonsModel = Backbone.Model.extend({
         idAttribute: 'pk',
         urlRoot: function() {
             return '/scripts/tests/response-person.json';
@@ -20,5 +20,5 @@ define([
         }
     });
 
-    return PersonModel;
+    return PersonsModel;
 });

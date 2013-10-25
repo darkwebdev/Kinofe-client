@@ -4,6 +4,7 @@ define([
     'underscore',
     'backbone',
 
+    'models/users',
     'models/persons',
     'models/films',
     'collections/films',
@@ -13,7 +14,7 @@ define([
     'views/film-list',
     'views/sidebar'
 ], function (_, Backbone,
-         PersonsModel, FilmsModel, FilmsCollection,
+         UsersModel, PersonsModel, FilmsModel, FilmsCollection,
          PersonDetailsView, FilmDetailsView, FilmListView, SidebarView
     ) {
     'use strict';
@@ -29,7 +30,7 @@ define([
         },
 
         detailsView: null,
-        sidebarView: new SidebarView(),
+        sidebarView: null,
 
         showDetails: function(Model, View, id) {
 //            console.log('show details', Model, View, id);
@@ -57,6 +58,16 @@ define([
 
             var router = new Router();
 
+            var user = new UsersModel();
+            console.log('user', user);
+
+            router.sidebarView = (function() {
+                return new SidebarView({
+                    model: user,
+                    router: this
+                });
+            }());
+
             router.on('route:getFilm', function(id) {
                 console.log('getFilm route', id);
                 return this.showDetails(FilmsModel, FilmDetailsView, id);
@@ -83,7 +94,8 @@ define([
             var showFilmList = function(collection) {
                 var filmListView = new FilmListView({
                     collection: collection || new FilmsCollection(),
-                    router: router
+                    router: router,
+                    user: user
                 });
 
                 $('.icon-theater').on('click', function(){

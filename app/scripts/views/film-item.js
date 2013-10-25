@@ -25,12 +25,23 @@ define([
         },
 
         events: {
-            'click': 'filmHandler'
+            'click': 'filmHandler',
+            'click .seen': 'seenHandler'
         },
 
         filmHandler: function() {
             console.log('get film', this.model.id);
             this.options.router.navigate('/' + this.model.id, {trigger: true});
+        },
+
+        seenHandler: function(e) {
+            e.stopPropagation();
+            this.options.user.seenFilm(this.model.id);
+            this.hide();
+        },
+
+        hide: function() {
+            this.$el.hide();
         }
 
     });

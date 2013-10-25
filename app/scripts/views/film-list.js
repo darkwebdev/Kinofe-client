@@ -54,7 +54,8 @@ define([
             this.collection.each(function(film) {
                 filmView = new FilmView({
                     model: film,
-                    router: this.options.router
+                    router: this.options.router,
+                    user: this.options.user
                 });
                 filmView.render();
                 html = filmView.el;

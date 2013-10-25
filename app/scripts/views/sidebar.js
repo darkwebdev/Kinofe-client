@@ -12,8 +12,10 @@ define([
         template: SidebarHtml,
 
         initialize: function() {
+            console.log('sidebar init');
+            View.prototype.initialize.apply(this);
+
             var view = this;
-            this.render();
 
             $('.icon-settings').on('click', function(){
                 console.log('icon settings clicked');
@@ -22,10 +24,10 @@ define([
         },
 
         render: function() {
-            var html = this.template({});
-//            console.log('render', dict);
+            var user_dict = this.model.toJSON();
+            var html = this.template({user: user_dict});
             this.$el.html(html);
-        }
+        },
 
     });
 
