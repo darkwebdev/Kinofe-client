@@ -128,17 +128,14 @@ define([
 
             var showFilmList = function(collection) {
                 collection = collection || new FilmsCollection();
-//                debugger;
-                if (router.filmListView) {
-                    router.hideDetails();
-                    router.hideSidebar();
-                } else {
-                    router.filmListView = new FilmListView({
-                        collection: collection,
-                        router: router,
-                        user: user
-                    });
-                }
+//              todo: cache films list
+                router.hideDetails();
+                router.hideSidebar();
+                router.filmListView = new FilmListView({
+                    collection: collection,
+                    router: router,
+                    user: user
+                });
             };
 
 
