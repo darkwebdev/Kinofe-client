@@ -1,18 +1,18 @@
 define([
     'underscore',
     'backbone',
-    'json5'
-], function (_, Backbone, JSON) {
+//    'json5'
+], function (_, Backbone/*, JSON*/) {
     'use strict';
 
     var FilmsModel = Backbone.Model.extend({
-        idAttribute: 'pk',
+//        idAttribute: 'pk',
         urlRoot: function() {
-            return '/scripts/tests/response-film.json';
+            //return '/scripts/tests/response-film.json';
+            return 'http://127.0.0.1:8000/movie/'
         },
         parse: function(response) {
             if (typeof response == 'string') {
-//            console.log('model parse', typeof response, response);
                 var validResponse = JSON.parse(response);
                 console.log('model parsed', typeof validResponse, validResponse);
                 return validResponse;

@@ -8,8 +8,8 @@
 		.rating= 'rating: ' + imdb_rating + ' (' + imdb_votes + ' votes)'
 		ul.list.janre-list janres:
 			each janre_item in janre
-				li.link.link-janre(data-name=janre_item.name)= janre_item.name
-		.runtime= 'runtime: ' + get_runtime
+				li.link.link-janre(data-name=janre_item)= janre_item
+		.runtime= 'runtime: ' + runtime
 		div= 'theater release: ' + theater_date
 		div= 'dvd release: ' + dvd_date
 		article.description
@@ -17,12 +17,12 @@
 		div director:
 			ul.list.crew
 				each director_person in director
-					li.link.link-person(data-id=director_person.pk)= director_person.name
+					li.link.link-person(data-id=director_person.id)= director_person.name
 		div actors:
 			ul.list.crew
 				each actor_person in actor
 					li
-						span.link.link-person(data-id=actor_person.pk)= actor_person.name
+						span.link.link-person(data-id=actor_person.id)= actor_person.name
 						span= ' as ' + actor_person.get_char
 
 		div

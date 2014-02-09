@@ -21,14 +21,37 @@ define([
 
     console.log('controller');
 
+    //override bb.syn for cors support
+    var proxiedSync = Backbone.sync;
+    Backbone.sync = function(method, model, options) {
+        options || (options = {});
+        if (!options.crossDomain) {
+            options.crossDomain = true;
+        }
+        if (!options.xhrFields) {
+            options.xhrFields = {withCredentials:false};
+        }
+        return proxiedSync(method, model, options);
+    };
+    /*$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+        options.crossDomain ={
+            crossDomain: true
+        };
+        options.xhrFields = {
+            withCredentials: true
+        };
+    });*/
+
     var Router = Backbone.Router.extend({
         routes: {
+            'me': 'getProfile',
             'janre/:name': 'getJanre',
             'person/:id': 'getPerson',
             ':id': 'getFilm',
             '*actions': 'defaultRoute'
         },
 
+        filmListView: null,
         detailsView: null,
         sidebarView: null,
 
@@ -40,6 +63,10 @@ define([
                 router: this
             });
             return this;
+        },
+
+        showSidebar: function() {
+            this.sidebarView.show();
         },
 
         hideDetails: function() {
@@ -56,6 +83,8 @@ define([
     return {
         initialize: function() {
 
+            console.log('router init');
+
             var router = new Router();
 
             var user = new UsersModel();
@@ -64,45 +93,52 @@ define([
             router.sidebarView = (function() {
                 return new SidebarView({
                     model: user,
-                    router: this
+                    router: router
                 });
             }());
 
+            router.on('route:getProfile', function() {
+                console.log('getProfile route');
+                this.showSidebar();
+            });
+
+
             router.on('route:getFilm', function(id) {
                 console.log('getFilm route', id);
-                return this.showDetails(FilmsModel, FilmDetailsView, id);
+                this.showDetails(FilmsModel, FilmDetailsView, id);
             });
 
             router.on('route:getPerson', function(id) {
                 console.log('getPerson route', id);
-                return this.showDetails(PersonsModel, PersonDetailsView, id);
+                this.showDetails(PersonsModel, PersonDetailsView, id);
             });
 
             router.on('route:getJanre', function(name) {
                 console.log('getJanre route', name, janreFilms);
                 var janreFilms = new FilmsCollection([], {
-                    url: '/scripts/tests/response-janre.json'
+                    url: 'http://127.0.0.1:8000/movies/'+name
                 });
-                return showFilmList(janreFilms);
+                showFilmList(janreFilms);
             });
 
             router.on('route:defaultRoute', function(actions) {
                 console.log('default route');
-                return showFilmList();
+                showFilmList();
             });
 
             var showFilmList = function(collection) {
-                var filmListView = new FilmListView({
-                    collection: collection || new FilmsCollection(),
-                    router: router,
-                    user: user
-                });
-
-                $('.icon-theater').on('click', function(){
-                    console.log('icon theater clicked');
-                });
-
-                return filmListView;
+                collection = collection || new FilmsCollection();
+//                debugger;
+                if (router.filmListView) {
+                    router.hideDetails();
+                    router.hideSidebar();
+                } else {
+                    router.filmListView = new FilmListView({
+                        collection: collection,
+                        router: router,
+                        user: user
+                    });
+                }
             };
 
 

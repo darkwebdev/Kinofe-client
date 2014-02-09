@@ -20,7 +20,7 @@ define([
         render: function() {
             var dict = this.model.toJSON();
             var html = this.template(dict);
-//            console.log('render', dict);
+//            console.log('render film item', dict);
             this.$el.html(html).show();
         },
 

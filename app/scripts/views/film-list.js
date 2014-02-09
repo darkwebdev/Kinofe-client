@@ -23,6 +23,16 @@ define([
             this.update();
             _.bindAll(this, 'scrollDown'); //????
             $(window).scroll(this.scrollDown);
+
+            var view = this;
+            $('.icon-settings').on('click', function(){
+                console.log('icon settings clicked');
+                view.navigate('/me');
+            });
+            $('.icon-theater').on('click', function(){
+                console.log('icon theater clicked');
+            });
+
         },
 
         update: function() {
@@ -67,7 +77,7 @@ define([
         scrollDown: function () {
             var triggerPoint = 100; // 100px from the bottom
 
-            if( !this.isBusy && $('body')[0].scrollTop + $(window).height() + triggerPoint > $(document).height() ) {
+            if( !this.isBusy && document.documentElement.scrollTop + $(window).height() + triggerPoint > $(document).height() ) {
                 this.collection.page += 1;
                 this.update();
             }

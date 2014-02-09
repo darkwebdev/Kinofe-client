@@ -33,8 +33,9 @@ define([
 
         render: function() {
             var dict = this.model.toJSON();
-            var html = this.template(dict);
             console.log('render', dict);
+            var html = this.template(dict);
+//            console.log('html:', html);
             this.$el.html(html).show();
         },
 
@@ -49,7 +50,7 @@ define([
         events: function() {
             return _.extend({}, GenericView.prototype.events, {
                 'click .link-back': function() {
-                  window.history.back();
+                    this.navigate('');
                 }
             });
         }

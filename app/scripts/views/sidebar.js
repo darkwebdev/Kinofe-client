@@ -14,13 +14,6 @@ define([
         initialize: function() {
             console.log('sidebar init');
             View.prototype.initialize.apply(this);
-
-            var view = this;
-
-            $('.icon-settings').on('click', function(){
-                console.log('icon settings clicked');
-                view.show();
-            });
         },
 
         render: function() {
